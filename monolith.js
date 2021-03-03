@@ -26,6 +26,22 @@ function login() {
   key = document.getElementById("login_token").value;
   localStorage.setItem('login_key', key);
   $("#login_div").slideUp("slow", function () {
-     page_maker("components/decision.html", "decision_c");
+    page_maker("components/decision.html", "decision_c");
+  });
+}
+
+function gotoEditC() {
+  $("#decision_div").slideUp("slow", function () {
+    page_maker("components/editcatalogue.html", "edit_c");
+    var responseCarrier;
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        responseCarrier = JSON.parse(this.responseText);
+        document.getElementById("editcatalogue_div").innerHTML = responseCarrier;
+      }
+    });
+    xhr.open("GET", "https://nikepick.github.io/p_catalogue/catalogue.json");
+    xhr.send();
   });
 }
