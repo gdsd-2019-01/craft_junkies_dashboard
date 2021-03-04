@@ -1,5 +1,4 @@
 var api = "https://api.imgbb.com/1/upload";
-//145ffb74f542dd121e504d6e5d699236
 var key = "";
 function banner_up() {
 
